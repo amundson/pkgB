@@ -1,9 +1,9 @@
-#include "pkgA.h"
+#include "pkgB.h"
 
 int
 main()
 {
-    PkgA pkgA(false);
-    pkgA.doit();
+    PkgB pkgB(false);
+    pkgB.doit();
     return 0;
 }

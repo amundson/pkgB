@@ -1,5 +1,5 @@
-add_library(pkgAlib SHARED pkgA.cc pkgA.h)
-target_include_directories(pkgAlib
+add_library(pkgBlib SHARED pkgB.cc pkgB.h)
+target_include_directories(pkgBlib
                            BEFORE
                            PUBLIC
                            $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
@@ -7,18 +7,18 @@ target_include_directories(pkgAlib
                            PRIVATE
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
 
-install(TARGETS pkgAlib EXPORT pkgATargets DESTINATION ${CMAKE_INSTALL_LIBDIR})
-install(FILES pkgA.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pkgA)
+install(TARGETS pkgBlib EXPORT pkgBTargets DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(FILES pkgB.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/pkgB)
 
-add_executable(pkgA main.cc)
-target_include_directories(pkgA
+add_executable(pkgB main.cc)
+target_include_directories(pkgB
                            BEFORE
                            PUBLIC
                            $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
                            $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
                            PRIVATE
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
-target_link_libraries(pkgA pkgAlib)
+target_link_libraries(pkgB pkgBlib)
 
-install(TARGETS pkgA DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(TARGETS pkgB DESTINATION ${CMAKE_INSTALL_BINDIR})
 

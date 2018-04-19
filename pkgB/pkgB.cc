@@ -1,12 +1,12 @@
-#include "pkgA.h"
+#include "pkgB.h"
 #include <iostream>
 
-PkgA::PkgA(bool just_used)
+PkgB::PkgB(bool just_used)
   : just_used(just_used)
 {}
 
 int
-PkgA::doit() const
+PkgB::doit() const
 {
     std::cout << "I ";
     if (just_used) {
@@ -14,6 +14,6 @@ PkgA::doit() const
     } else {
         std::cout << "am ";
     }
-    std::cout << "pkgA.\n";
+    std::cout << "pkgB.\n";
     return 7;
 }

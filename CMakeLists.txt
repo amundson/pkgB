@@ -1,60 +1,60 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(PKGA VERSION 2.0.0)
+project(PKGB VERSION 2.0.0)
 
 include(GNUInstallDirs)
 
-add_subdirectory(pkgA)
+add_subdirectory(pkgB)
 
 include(CMakePackageConfigHelpers)
 
 # * Versioning File (Same for Build/Install Trees)
 write_basic_package_version_file(
-  ${CMAKE_CURRENT_BINARY_DIR}/pkgAConfigVersion.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/pkgBConfigVersion.cmake
   VERSION
-  ${PKGA_VERSION}
+  ${PKGB_VERSION}
   COMPATIBILITY
   ExactVersion)
 
 # * Build Tree Config/Targets files
-set(PKGA_CURRENT_INCLUDEDIR "${PROJECT_SOURCE_DIR}")
-set(PKGA_CURRENT_LIBDIR "${PROJECT_BINARY_DIR}/pkga")
+set(PKGB_CURRENT_INCLUDEDIR "${PROJECT_SOURCE_DIR}")
+set(PKGB_CURRENT_LIBDIR "${PROJECT_BINARY_DIR}/pkgb")
 
-configure_package_config_file(pkgAConfig.cmake.in
-                              ${CMAKE_CURRENT_BINARY_DIR}/pkgAConfig.cmake
+configure_package_config_file(pkgBConfig.cmake.in
+                              ${CMAKE_CURRENT_BINARY_DIR}/pkgBConfig.cmake
                               INSTALL_DESTINATION
                               ${CMAKE_CURRENT_BINARY_DIR}
                               INSTALL_PREFIX
                               ${CMAKE_CURRENT_BINARY_DIR}
                               PATH_VARS
-                              PKGA_CURRENT_INCLUDEDIR
-                              PKGA_CURRENT_LIBDIR)
+                              PKGB_CURRENT_INCLUDEDIR
+                              PKGB_CURRENT_LIBDIR)
 
 # NB: must be called *after* EXPORT argument is created, hence move of
 # add_subdirectory earlier.
-export(EXPORT pkgATargets NAMESPACE pkga::)
+export(EXPORT pkgBTargets NAMESPACE pkgb::)
 
 # * Install Tree Config/Targets file
-set(PKGA_CURRENT_INCLUDEDIR "${CMAKE_INSTALL_INCLUDEDIR}")
-set(PKGA_CURRENT_LIBDIR "${CMAKE_INSTALL_LIBDIR}")
+set(PKGB_CURRENT_INCLUDEDIR "${CMAKE_INSTALL_INCLUDEDIR}")
+set(PKGB_CURRENT_LIBDIR "${CMAKE_INSTALL_LIBDIR}")
 
 configure_package_config_file(
-  pkgAConfig.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/InstallTreeFiles/pkgAConfig.cmake
+  pkgBConfig.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/InstallTreeFiles/pkgBConfig.cmake
   INSTALL_DESTINATION
-  ${CMAKE_INSTALL_LIBDIR}/pkga/cmake
+  ${CMAKE_INSTALL_LIBDIR}/pkgb/cmake
   PATH_VARS
-  PKGA_CURRENT_INCLUDEDIR
-  PKGA_CURRENT_LIBDIR)
+  PKGB_CURRENT_INCLUDEDIR
+  PKGB_CURRENT_LIBDIR)
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/InstallTreeFiles/pkgAConfig.cmake
-              ${CMAKE_CURRENT_BINARY_DIR}/pkgAConfigVersion.cmake
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/InstallTreeFiles/pkgBConfig.cmake
+              ${CMAKE_CURRENT_BINARY_DIR}/pkgBConfigVersion.cmake
               DESTINATION
-              ${CMAKE_INSTALL_LIBDIR}/cmake/pkga)
-install(EXPORT pkgATargets
+              ${CMAKE_INSTALL_LIBDIR}/cmake/pkgb)
+install(EXPORT pkgBTargets
                NAMESPACE
-               pkga::
+               pkgb::
                DESTINATION
-               ${CMAKE_INSTALL_LIBDIR}/cmake/pkga)
+               ${CMAKE_INSTALL_LIBDIR}/cmake/pkgb)
 
 # * Uninstall target
 if(NOT TARGET uninstall)

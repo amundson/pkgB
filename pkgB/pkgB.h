@@ -1,13 +1,13 @@
-#ifndef PKGA_H_
+#ifndef PKGB_H_
 
-class PkgA
+class PkgB
 {
   private:
     bool just_used;
 
   public:
-    PkgA(bool just_used);
+    PkgB(bool just_used);
     int doit() const;
 };
 
-#endif // PKGA_H_
+#endif // PKGB_H_

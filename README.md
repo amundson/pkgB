@@ -1,2 +1,2 @@
 # pkgB
-Stub package for build system exploration; depends on pkgA
+Stub package for build system exploration; depends on pkgB
