@@ -1,0 +1,13 @@
+#!/bin/sh
+old=a
+Old=A
+new=b
+New=B
+for f in `find . -type f | grep -v git | grep -v build`
+do
+    batchreplace pkg$old pkg$new $f
+    batchreplace pkg$Old pkg$New $f
+    batchreplace PKG$Old PKG$New $f
+    batchreplace Pkg$Old Pkg$New $f
+done
+
