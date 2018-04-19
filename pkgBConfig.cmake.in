@@ -1,0 +1,10 @@
+set(PKGA_VERSION @PKGA_VERSION@)
+
+@PACKAGE_INIT@
+
+set_and_check(PKGA_INCLUDE_DIR "@PACKAGE_PKGA_CURRENT_INCLUDEDIR@")
+set_and_check(PKGA_LIB_DIR "@PACKAGE_PKGA_CURRENT_LIBDIR@")
+
+include("${CMAKE_CURRENT_LIST_DIR}/PkgATargets.cmake")
+
+check_required_components(PkgA)
